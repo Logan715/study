@@ -4,8 +4,14 @@ const webpack = require("webpack");
 const path = require("path");
 
 const target = "localhost:7070";
+console.log("mouse-an", path.resolve(__dirname, "src/components/index.js"));
 module.exports = merge(common, {
 	devtool: "inline-source-map",
+	resolve: {
+		alias: {
+			"mouse-an": path.resolve(__dirname, "../src/components"),
+		},
+	},
 	devServer: {
 		host: "0.0.0.0",
 		port: 9030,

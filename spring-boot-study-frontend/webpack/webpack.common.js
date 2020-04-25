@@ -89,7 +89,7 @@ module.exports = {
 			// 这里设置css开启modules支持,node_modules和antd里面的css不开启
 			{
 				test: /\.css$/,
-				exclude: /node_modules|antd\.css|global.css/,
+				exclude: /node_modules|antd\.css|global.css|src\/components/,
 				use: [
 					"style-loader",
 					{
@@ -106,7 +106,7 @@ module.exports = {
 			// 针对node_modules和antd里面的css写编译配置
 			{
 				test: /\.css$/,
-				include: /node_modules|antd\.css|global.css/,
+				include: /node_modules|antd\.css|global.css|src\/components/,
 				use: [
 					"style-loader",
 					{

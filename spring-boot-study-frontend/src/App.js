@@ -4,7 +4,7 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import asyncComponent from "./utils/AsyncComponent";
 import history from "./utils/history";
-
+import "./components/index.css";
 const App = () => {
 	const basicLayout = asyncComponent(() => import("./layout/BasicLayout"));
 	return (
