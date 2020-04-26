@@ -2,14 +2,14 @@ const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const webpack = require("webpack");
 const path = require("path");
-
-const target = "localhost:7070";
+const target = require("../host");
 console.log("mouse-an", path.resolve(__dirname, "src/components/index.js"));
 module.exports = merge(common, {
 	devtool: "inline-source-map",
 	resolve: {
 		alias: {
 			"mouse-an": path.resolve(__dirname, "../src/components"),
+			host: path.resolve(__dirname, "../host"),
 		},
 	},
 	devServer: {

@@ -2,6 +2,10 @@
   项目本身的全局样式
 */
 
+.mouse-mb {
+	margin-bottom: 8px;
+}
+
 .mouse-layout {
 	display: flex;
 	flex-direction: column;

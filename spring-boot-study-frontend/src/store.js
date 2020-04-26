@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
-import TestReducer from "./test/reducer";
-const storeTree = combineReducers({ TestReducer });
+const storeTree = combineReducers({ TestReducer: {} });
 
 const composeEnhancers =
 	typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

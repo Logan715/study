@@ -17,8 +17,8 @@ class RouterUtils {
 				component: asyncComponent(() => import("../pages/Websocket")),
 			},
 			{
-				path: "/test",
-				component: asyncComponent(() => import("../test/hello")),
+				path: "/event",
+				component: asyncComponent(() => import("../pages/ApplicationEvent")),
 			},
 		];
 

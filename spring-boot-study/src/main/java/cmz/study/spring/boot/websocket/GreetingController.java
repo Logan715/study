@@ -28,10 +28,9 @@ public class GreetingController {
     }
 
     @Scheduled(fixedRate = 1000)
-    public String serverTime () throws Exception {
+    public void serverTime () throws Exception {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         simpMessagingTemplate.convertAndSend("/topic/sysTime", df.format(System.currentTimeMillis()));
-        return "sysTeme";
     }
 
     @Scheduled(fixedRate = 2000)
