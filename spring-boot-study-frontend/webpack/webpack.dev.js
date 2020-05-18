@@ -14,7 +14,7 @@ module.exports = merge(common, {
 	},
 	devServer: {
 		host: "0.0.0.0",
-		port: 9030,
+		port: 9130,
 		contentBase: path.join(__dirname, "../dist/webapp"),
 		publicPath: "/",
 		overlay: {

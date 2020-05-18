@@ -20,6 +20,10 @@ class RouterUtils {
 				path: "/event",
 				component: asyncComponent(() => import("../pages/ApplicationEvent")),
 			},
+			{
+				path: "/json/editor",
+				component: asyncComponent(() => import("../pages/Json/Editor")),
+			},
 		];
 
 		return routers;
