@@ -1,5 +1,9 @@
+application:
+  name: test-app
 server:
   port: 7070
+  address: 127.0.0.1
+
 
 spring:
   datasource:
@@ -10,3 +14,6 @@ spring:
   http:
     converters:
       preferred-json-mapper=gson:
+#
+#cmz:
+#  test: 2

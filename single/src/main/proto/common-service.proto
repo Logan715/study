@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+package aas;
+
+import "google/protobuf/any.proto";
+
+option java_multiple_files = true;
+option java_package = "com.apex.ams.common";
+
+
+//common service
+service Common {
+    //Responsive
+    rpc handle (CommRequest) returns (CommResponse) {}
+    //StreamData
+    rpc streamHandle (CommRequest) returns (stream CommStreamResponse) {}
+    //Download
+    rpc download (DownloadRequest) returns (stream DownloadResponse) {}
+    //Upload
+    rpc upload (stream UploadRequest) returns (UploadResponse) {}
+}
+
+//request message
+message CommRequest {
+    string func = 1;
+    string serialNum = 2;
+    map<string,google.protobuf.Any> head = 3;
+    map<string,google.protobuf.Any> param = 4;
+    int64 currentPage = 5;
+    int64 pageSize = 6;
+}
+
+//common record data
+message CommData {
+    map<string,google.protobuf.Any> row = 1;
+}
+
+//response message
+message CommResponse {
+    int32 code = 1;
+    string note = 2;
+    string serialNum = 3;
+    int32 errcode = 4;
+    string duration = 5;
+    int64 totalPage = 6;
+    int64 totalRecord = 7;
+    map<string,google.protobuf.Any> head = 8;
+    repeated CommData record = 9;
+    map<string,google.protobuf.Any> data = 10;
+
+}
+
+//stream response message
+message CommStreamResponse {
+    message RespInfo {
+        int32 code = 1;
+        string note = 2;
+        string serialNum = 3;
+        int32 errcode = 4;
+        string duration = 5;
+        int64 totalPage = 6;
+        int64 totalRecord = 7;
+        map<string,google.protobuf.Any> head = 8;
+    }
+    oneof resp {
+        RespInfo info = 1;
+        CommData record = 2;
+    }
+}
+
+message UploadFileInfo{
+    string token = 1;
+    string fileName = 2;
+    int64 fileLength = 3;
+    map<string,google.protobuf.Any> param = 4;
+}
+
+message UploadRequest {
+    oneof params{
+        UploadFileInfo fileInfo = 1;
+        bytes data = 2;
+    }
+}
+
+message UploadResponse {
+    int32 code = 1;
+    string note = 2;
+    string filecode = 3;
+    int32 errcode = 4;
+    string duration = 5;
+    map<string,google.protobuf.Any> data = 6;
+}
+
+message DownloadFileInfo {
+    int32 code = 1;
+    string note = 2;
+    string fileName = 3;
+    int64 fileLength = 4;
+    map<string,google.protobuf.Any> param = 5;
+    int32 errcode = 6;
+    string duration = 7;
+}
+
+message DownloadRequest {
+    map<string,google.protobuf.Any> head = 1;
+    map<string,google.protobuf.Any> param = 2;
+    string filecode = 3;
+}
+
+message DownloadResponse {
+    oneof params{
+        DownloadFileInfo fileInfo = 1;
+        bytes data = 2;
+    }
+}
+

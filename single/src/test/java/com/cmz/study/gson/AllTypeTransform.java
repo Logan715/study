@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -56,12 +57,40 @@ public class AllTypeTransform {
         System.out.println("=== testPersonType");
         System.out.println("json:" + json);
         System.out.println("target:" + target);
+    }
+
+    @Test
+    public void testListType2() {
+        Gson gson = new Gson();
+        List<Person> list = new ArrayList<Person>(){{
+            add(new Person("Logan", "male", 30));
+            add(new Person("Logan2", "female", 301));
+            add(new Person("Logan3", "male", 302));
+        }};
+        Type type = new TypeToken<List<Person>>(){}.getType();
+        String json = gson.toJson(list, type);
 
 
+
+        System.out.println("=== testPersonType");
+        System.out.println("json:" + json);
+        Type type2 = new TypeToken<List<HashMap>>(){}.getType();
+        List<HashMap> target = gson.fromJson(json, type2);
+        System.out.println("target:" + target);
+
+        for (int i = 0; i < target.size(); i++) {
+            System.out.println(target.get(i) +"|是否是HashMap｜" +Boolean.toString(target.get(i) instanceof HashMap));
+        }
     }
 
 
 
 
 
+
+
+
 }
+
+
+

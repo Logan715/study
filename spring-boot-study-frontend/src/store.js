@@ -1,6 +1,14 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
-const storeTree = combineReducers({ TestReducer: {} });
+
+
+const reducer = (state={}, action) => {
+	switch(action.type) {
+		default: 
+		return state;
+	}
+}
+const storeTree = combineReducers({ reducer });
 
 const composeEnhancers =
 	typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
